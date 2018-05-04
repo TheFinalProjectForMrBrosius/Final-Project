@@ -4,7 +4,6 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
-
 using namespace std;
 
 int main()
@@ -14,6 +13,9 @@ int main()
 	string userChoice;
 	
 	do{
+		cout << "|--------------------------------------|" << endl;
+		cout << "|Welcome To The BEST CASINO EVER!!!!!!!|" << endl;
+		cout << "|--------------------------------------|" << endl;
 		cout << "Would you like to roll a dice? >>>" << endl;
 		cin >> userChoice;
 		rollOfDieOne = rand() % 6 + 1;
@@ -29,7 +31,7 @@ int main()
 		//If the user says no the the question on the top
 		else if (userChoice == "NO" || userChoice == "no")
 		{
-			cout << "Ok have a nice day" << endl;
+			cout << "Ok have a nice day then" << endl;
 		}
 	} while (userChoice != "yes");
 

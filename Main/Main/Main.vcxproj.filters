@@ -24,5 +24,8 @@
     <ClCompile Include="CasinNumberGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BettingGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
