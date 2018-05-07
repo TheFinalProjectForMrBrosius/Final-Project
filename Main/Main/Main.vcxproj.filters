@@ -18,11 +18,16 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="dieroller.cpp">
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Betting.h">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CasinNumberGame.cpp">
+    </ClInclude>
+    <ClInclude Include="Dice.h">
       <Filter>Source Files</Filter>
-    </ClCompile>
+    </ClInclude>
+    <ClInclude Include="Number.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
