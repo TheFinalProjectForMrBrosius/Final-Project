@@ -1,10 +1,11 @@
-#include <iostream>
-#include <time.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <cstdlib>
+#include <iostream>
+#include <string>
 using namespace std;
-
-int main()
+int casinoGame1()
 {
 	int userAmount;
 	int secret;
