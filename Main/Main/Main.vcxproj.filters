@@ -20,13 +20,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Betting.h">
+    <ClInclude Include="DiceGame.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Dice.h">
+    <ClInclude Include="BettingGame.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Number.h">
+    <ClInclude Include="NumberGame.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
