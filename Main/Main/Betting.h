@@ -8,6 +8,7 @@ int main()
 {
 	int userAmount;
 	int secret;
+	int userchoice;
 	double totalBet = 0, maxBet = 500;
 
 	srand(time(NULL));
@@ -24,6 +25,10 @@ int main()
 
 	cout << "Ok, you are betting " << userAmount << " dollars." << endl;
 
+	if (userAmount > maxBet)
+	{
+		cout << "Your bet is to HIGH kick it down a little" << endl;
+	}
 	if (userAmount > maxBet)
 	{
 		cout << "Your bet is to HIGH kick it down a little" << endl;
