@@ -72,8 +72,7 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BettingGame.h" />
-    <ClInclude Include="DiceGame.h" />
+    <ClInclude Include="CasinoGames.h" />
     <ClInclude Include="NumberGame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
