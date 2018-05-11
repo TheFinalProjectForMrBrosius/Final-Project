@@ -1,14 +1,21 @@
+/*	Authors:
+	Brady Heston
+	Daniel McGlasson
+*/
+
+
 #include "CasinoGames.h"
 
 int main()
 {
-	SetConsoleTitle(TEXT("That One Casino"));
+	SetConsoleTitle(TEXT("That One Casino")); // Changing the console title to whatever is in the quotes
 	system("cls");
 	int userSwitchChoice;
 	
-	WelcomeMessage();
+	WelcomeMessage(); // Displays WelcomeMessage in consoleControls.h
 
-	std::cout << "\n\n[1] Switch Text Color\n[2] Betting Game\n[3] Dice Game\n\nWhat would you like to do: ";
+
+	std::cout << "\n\nDouble Earnings: " << DoubleEarnings << "\nTesting: " << MoreTextColors << "\n\nYou currently have $" << userCurrencyAmount << "\n\n[1] Switch Text Color\n[2] Betting Game\n[3] Dice Game\n[4] Number Guessing Game\n[5] Shop\n\nWhat would you like to do: ";
 	std::cin >> userSwitchChoice;
 
 	switch (userSwitchChoice)
@@ -23,7 +30,14 @@ int main()
 	case 3:
 		DiceGame();
 		main();
-	default:
+	case 4:
+		NumberGuessingGame();
+		main();
+	case 5:
+		ShopControl::ShowShop(userCurrencyAmount);
+		system("Pause");
+		main();
+	default: // If the input isn't an option
 		system("cls");
 		std::cout << "Invalid number!" << std::endl;
 		Sleep(1500);

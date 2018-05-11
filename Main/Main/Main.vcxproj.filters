@@ -23,10 +23,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="NumberGame.h">
+    <ClInclude Include="CasinoGames.h">
       <Filter>Source Files\CustomHeaders</Filter>
     </ClInclude>
-    <ClInclude Include="CasinoGames.h">
+    <ClInclude Include="fileController.h">
+      <Filter>Source Files\CustomHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="consoleControls.h">
+      <Filter>Source Files\CustomHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="shopControl.h">
       <Filter>Source Files\CustomHeaders</Filter>
     </ClInclude>
   </ItemGroup>

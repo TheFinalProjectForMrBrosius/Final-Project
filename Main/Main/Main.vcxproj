@@ -73,7 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CasinoGames.h" />
-    <ClInclude Include="NumberGame.h" />
+    <ClInclude Include="consoleControls.h" />
+    <ClInclude Include="fileController.h" />
+    <ClInclude Include="shopControl.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
