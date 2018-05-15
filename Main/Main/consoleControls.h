@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -5,15 +7,18 @@
 #include <time.h>
 
 #include "shopControl.h"
+#include "fileController.h"
+
+bool loggedIn = false;
+
+std::string Username = "Admin";
+std::string Password = "Password";
 
 // Declaring functions before hand
 std::string TransformTextCasing(std::string type, std::string text);
 void TransformTextColor();
 void WelcomeMessage();
 int RandomNumberGenerator(int maxNumber);
-
-// Setting random number for the user cash
-double userCurrencyAmount = RandomNumberGenerator(500);
 
 
 std::string TransformTextCasing(std::string type, std::string text)
@@ -91,4 +96,48 @@ int RandomNumberGenerator(int maxNumber)
 {
 	srand(time(NULL));
 	return rand() % maxNumber + 1;
+}
+
+void AdminLogin()
+{
+	if (loggedIn == false)
+	{
+		system("cls");
+		std::string attemptUsername, attemptPassword;
+
+		std::cout << "Username: ";
+		std::cin >> attemptUsername;
+		std::cout << "Password: ";
+		std::cin >> attemptPassword;
+
+
+		if (attemptUsername == Username && attemptPassword == Password)
+		{
+			loggedIn = true;
+			int userSwitchChoice;
+			system("cls");
+			std::cout << "Enter a number that's not valid to go back to main menu\n\n[1] Give Cash\n\nWhat would you like to do: ";
+			std::cin >> userSwitchChoice;
+
+			switch (userSwitchChoice)
+			{
+			case 1:
+				FileController::GiveCash();
+				AdminLogin();
+			}
+		}
+	}
+	else
+	{
+		system("cls");
+		int userSwitchChoice;
+		std::cout << "[1] Give Cash\n\nWhat would you like to do: ";
+		std::cin >> userSwitchChoice;
+
+		switch (userSwitchChoice)
+		{
+		case 1:
+			FileController::GiveCash();
+		}
+	}
 }

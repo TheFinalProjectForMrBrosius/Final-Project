@@ -3,13 +3,15 @@
 #include <algorithm>
 #include <Windows.h>
 
+#include "fileController.h"
+
 std::string itemNames[] = { "DoubleEarnings", "MoreTextColors"};
-double itemPrices[] = { 10, 0.99 };
+int itemPrices[] = { 10, 1 };
 
 bool DoubleEarnings = false;
 bool MoreTextColors = false;
 
-namespace ShopControl // Setting namespace so we can do ShopControl::function/variable
+namespace ShopControl // Setting namespace so we can do ShopControl::function
 {
 	void ShowShop(double userCurrencyAmount)
 	{
@@ -41,12 +43,14 @@ namespace ShopControl // Setting namespace so we can do ShopControl::function/va
 						if (userItemChoice == "DoubleEarnings" && DoubleEarnings != true) // checking to see if the user input is DoubleEarnings and the boolean DoubleEarnings isn't true
 						{
 							userCurrencyAmount = userCurrencyAmount - itemPrices[x]; // deducting the item price amount
+							FileController::SaveStatsToFile("userStats.txt", userCurrencyAmount);
 							DoubleEarnings = true;
 							std::cout << "\nSuccessfully bought " << userItemChoice << "!" << std::endl;
 						}
 						else if (userItemChoice == "MoreTextColors" && MoreTextColors != true)
 						{
 							userCurrencyAmount = userCurrencyAmount - itemPrices[x];
+							FileController::SaveStatsToFile("userStats.txt", userCurrencyAmount);
 							MoreTextColors = true;
 							std::cout << "\nSuccessfully bought " << userItemChoice << "!" << std::endl;
 						}

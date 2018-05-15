@@ -3,8 +3,10 @@
 	Daniel McGlasson
 */
 
-
 #include "CasinoGames.h"
+#include <conio.h>
+
+bool FirstLoad = true;
 
 int main()
 {
@@ -12,10 +14,15 @@ int main()
 	system("cls");
 	int userSwitchChoice;
 	
+	FileController::GetStatsFromFile("userStats.txt");
+	
 	WelcomeMessage(); // Displays WelcomeMessage in consoleControls.h
 
 
-	std::cout << "\n\nDouble Earnings: " << DoubleEarnings << "\nTesting: " << MoreTextColors << "\n\nYou currently have $" << userCurrencyAmount << "\n\n[1] Switch Text Color\n[2] Betting Game\n[3] Dice Game\n[4] Number Guessing Game\n[5] Shop\n\nWhat would you like to do: ";
+	std::cout << "\n\nDouble Earnings: " << DoubleEarnings << "\nMore Text Colors: " 
+		<< MoreTextColors << "\n\nYou currently have $" << 
+		userCurrencyAmount << "\n\n[1] Switch Text Color\n[2] Betting Game\n[3] Dice Game\n[4] Number Guessing Game\n[5] Shop\n[6] Rob Casino\n[7] Reset Cash\n[8] Admin Login\n\nWhat would you like to do: ";
+
 	std::cin >> userSwitchChoice;
 
 	switch (userSwitchChoice)
@@ -25,17 +32,26 @@ int main()
 		Sleep(1500);
 		main();
 	case 2:
-		BettingGame();
+		CasinoGames::BettingGame();
 		main();
 	case 3:
-		DiceGame();
+		CasinoGames::DiceGame();
 		main();
 	case 4:
-		NumberGuessingGame();
+		CasinoGames::NumberGuessingGame();
 		main();
 	case 5:
 		ShopControl::ShowShop(userCurrencyAmount);
 		system("Pause");
+		main();
+	case 6:
+		CasinoGames::RobCasino();
+		main();
+	case 7:
+		FileController::ResetCash();
+		main();
+	case 8:
+		AdminLogin();
 		main();
 	default: // If the input isn't an option
 		system("cls");
