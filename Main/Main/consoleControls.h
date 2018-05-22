@@ -10,6 +10,7 @@
 #include "fileController.h"
 
 bool loggedIn = false;
+bool Debugging = true;
 
 std::string Username = "Admin";
 std::string Password = "Password";
@@ -100,44 +101,37 @@ int RandomNumberGenerator(int maxNumber)
 
 void AdminLogin()
 {
-	if (loggedIn == false)
+	system("cls");
+	std::string attemptUsername, attemptPassword;
+
+	std::cout << "Username: ";
+	std::cin >> attemptUsername;
+	std::cout << "Password: ";
+	std::cin >> attemptPassword;
+
+
+	if (attemptUsername == Username && attemptPassword == Password)
 	{
-		system("cls");
-		std::string attemptUsername, attemptPassword;
-
-		std::cout << "Username: ";
-		std::cin >> attemptUsername;
-		std::cout << "Password: ";
-		std::cin >> attemptPassword;
-
-
-		if (attemptUsername == Username && attemptPassword == Password)
-		{
-			loggedIn = true;
-			int userSwitchChoice;
-			system("cls");
-			std::cout << "Enter a number that's not valid to go back to main menu\n\n[1] Give Cash\n\nWhat would you like to do: ";
-			std::cin >> userSwitchChoice;
-
-			switch (userSwitchChoice)
-			{
-			case 1:
-				FileController::GiveCash();
-				AdminLogin();
-			}
-		}
-	}
-	else
-	{
-		system("cls");
+		loggedIn = true;
 		int userSwitchChoice;
-		std::cout << "[1] Give Cash\n\nWhat would you like to do: ";
+		system("cls");
+		std::cout << "Enter a number that's not valid to go back to main menu\n\n[1] Give Cash\n[2] Toggle Debug\n\nWhat would you like to do: ";
 		std::cin >> userSwitchChoice;
 
 		switch (userSwitchChoice)
 		{
 		case 1:
 			FileController::GiveCash();
+			AdminLogin();
+		case 2:
+			if (Debugging == true)
+			{
+				Debugging = false;
+			}
+			else if (Debugging == false)
+			{
+				Debugging = true;
+			}
 		}
 	}
 }
