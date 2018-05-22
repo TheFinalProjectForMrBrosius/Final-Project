@@ -4,16 +4,15 @@
 #include <Windows.h>
 
 #include "fileController.h"
+#include "logController.h"
 
-std::string itemNames[] = { "DoubleEarnings", "MoreTextColors"};
-int itemPrices[] = { 10, 1 };
+//std::string itemNames[] = { "DoubleEarnings", "MoreTextColors", "Testing"};
+//int itemPrices[] = { 10000, 50, 25 };
 
-bool DoubleEarnings = false;
-bool MoreTextColors = false;
 
 namespace ShopControl // Setting namespace so we can do ShopControl::function
 {
-	void ShowShop(double userCurrencyAmount)
+	void ShowShop(int userCurrencyAmount)
 	{
 		system("cls");
 		SetConsoleTitle(TEXT("Bobby's Shop"));
@@ -21,12 +20,12 @@ namespace ShopControl // Setting namespace so we can do ShopControl::function
 		std::string userItemChoice;
 		std::string userConfirmation;
 
-		for (int x = 0; x < 2; x++)
+		for (int x = 0; x < itemNamesCount; x++)
 		{
 			std::cout << "Item: " << itemNames[x] << " | Price: " << itemPrices[x] << std::endl; // shows all the items and their prices in their array
 		}
 
-		std::cout << "What would you like to buy: ";
+		std::cout << "\nWhat would you like to buy: ";
 		std::cin >> userItemChoice; // getting user input
 
 		for (int x = 0; x < 2; x++)
@@ -43,15 +42,18 @@ namespace ShopControl // Setting namespace so we can do ShopControl::function
 						if (userItemChoice == "DoubleEarnings" && DoubleEarnings != true) // checking to see if the user input is DoubleEarnings and the boolean DoubleEarnings isn't true
 						{
 							userCurrencyAmount = userCurrencyAmount - itemPrices[x]; // deducting the item price amount
-							FileController::SaveStatsToFile("userStats.txt", userCurrencyAmount);
 							DoubleEarnings = true;
+							FileController::SaveStatsToFile(userCurrencyAmount);
+							Log::NewLog("Bought DoubleEarnings");
 							std::cout << "\nSuccessfully bought " << userItemChoice << "!" << std::endl;
+							
 						}
 						else if (userItemChoice == "MoreTextColors" && MoreTextColors != true)
 						{
 							userCurrencyAmount = userCurrencyAmount - itemPrices[x];
-							FileController::SaveStatsToFile("userStats.txt", userCurrencyAmount);
 							MoreTextColors = true;
+							FileController::SaveStatsToFile(userCurrencyAmount);
+							Log::NewLog("Bought MoreTextColors");
 							std::cout << "\nSuccessfully bought " << userItemChoice << "!" << std::endl;
 						}
 					}

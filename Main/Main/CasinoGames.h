@@ -12,7 +12,6 @@ Press CTRL+F and search for what ever you're looking for.
 int CasinoCash = RandomNumberGenerator(250000000);
 
 bool CasinoRobbed = false;
-bool Debugging = true;
 
 namespace CasinoGames
 {
@@ -24,6 +23,7 @@ namespace CasinoGames
 	void BettingGame()
 	{
 		SetConsoleTitle(TEXT("Betting Game"));
+		Log::NewLog("Won money at BettingGame");
 		std::string userStringChoice = "y";
 		int userNumberChoice;
 		int userBettingAmount;
@@ -52,20 +52,23 @@ namespace CasinoGames
 					if (DoubleEarnings == true) // seeing if they bought double earnings and if so get x4 their betting amount
 					{
 						userCurrencyAmount = userCurrencyAmount + (userBettingAmount * 4);
-						FileController::SaveStatsToFile("userStats.txt", userCurrencyAmount);
+						FileController::SaveStatsToFile(userCurrencyAmount);
+						Log::NewLog("Won money at BettingGame");
 						std::cout << "You won $" << userBettingAmount * 4 << "!\nYou currently have $" << userCurrencyAmount << "!" << std::endl;
 					}
 					else // if DoubleEarnings isn't true then this happens
 					{
 						userCurrencyAmount = userCurrencyAmount + (userBettingAmount * 2);
-						FileController::SaveStatsToFile("userStats.txt", userCurrencyAmount);
+						FileController::SaveStatsToFile(userCurrencyAmount);
+						Log::NewLog("Won money at BettingGame");
 						std::cout << "You won $" << userBettingAmount * 2 << "!\nYou currently have $" << userCurrencyAmount << "!" << std::endl;
 					}
 				}
 				else // checking to see if they lost
 				{
 					userCurrencyAmount = userCurrencyAmount - userBettingAmount;
-					FileController::SaveStatsToFile("userStats.txt", userCurrencyAmount);
+					FileController::SaveStatsToFile(userCurrencyAmount);
+					Log::NewLog("Lost money at BettingGame");
 					std::cout << "\nYou lost $" << userBettingAmount << "!\nThe number was " << randomNumber << "!\nYou currently have $" << userCurrencyAmount << "!" << std::endl;
 				}
 			}
@@ -110,20 +113,23 @@ namespace CasinoGames
 					if (DoubleEarnings == true)
 					{
 						userCurrencyAmount = userCurrencyAmount + (userBettingAmount * 4);
-						FileController::SaveStatsToFile("userStats.txt", userCurrencyAmount);
+						FileController::SaveStatsToFile(userCurrencyAmount);
+						Log::NewLog("Won money at DiceGame");
 						std::cout << "You won $" << userBettingAmount * 2 << "!\nYou currently have $" << userCurrencyAmount << "!" << std::endl;
 					}
 					else
 					{
 						userCurrencyAmount = userCurrencyAmount + (userBettingAmount * 2);
-						FileController::SaveStatsToFile("userStats.txt", userCurrencyAmount);
+						FileController::SaveStatsToFile(userCurrencyAmount);
+						Log::NewLog("Won money at DiceGame");
 						std::cout << "You won $" << userBettingAmount * 2 << "!\nYou currently have $" << userCurrencyAmount << "!" << std::endl;
 					}
 				}
 				else
 				{
 					userCurrencyAmount = userCurrencyAmount - userBettingAmount;
-					FileController::SaveStatsToFile("userStats.txt", userCurrencyAmount);
+					FileController::SaveStatsToFile(userCurrencyAmount);
+					Log::NewLog("Lost money at DiceGame");
 					std::cout << "You lost $" << userBettingAmount << "!\nThe number was " << randomNumber << "!\nYou currently have $" << userCurrencyAmount << "!" << std::endl;
 				}
 			}
@@ -168,20 +174,23 @@ namespace CasinoGames
 					if (DoubleEarnings == true)
 					{
 						userCurrencyAmount = userCurrencyAmount + (userBettingAmount * 4);
-						FileController::SaveStatsToFile("userStats.txt", userCurrencyAmount);
+						FileController::SaveStatsToFile(userCurrencyAmount);
+						Log::NewLog("Won money at NumberGuessingGame");
 						std::cout << "You won $" << userBettingAmount * 2 << "!\nYou currently have $" << userCurrencyAmount << "!" << std::endl;
 					}
 					else
 					{
 						userCurrencyAmount = userCurrencyAmount + (userBettingAmount * 2);
-						FileController::SaveStatsToFile("userStats.txt", userCurrencyAmount);
+						FileController::SaveStatsToFile(userCurrencyAmount);
+						Log::NewLog("Won money at NumberGuessingGame");
 						std::cout << "You won $" << userBettingAmount * 2 << "!\nYou currently have $" << userCurrencyAmount << "!" << std::endl;
 					}
 				}
 				else
 				{
 					userCurrencyAmount = userCurrencyAmount - userBettingAmount;
-					FileController::SaveStatsToFile("userStats.txt", userCurrencyAmount);
+					Log::NewLog("Lost money at NumberGuessingGame");
+					FileController::SaveStatsToFile(userCurrencyAmount);
 					std::cout << "You lost $" << userBettingAmount << "!\nThe number was " << randomNumber << "!\nYou currently have $" << userCurrencyAmount << "!" << std::endl;
 				}
 			}
@@ -205,7 +214,7 @@ namespace CasinoGames
 				FileController::GetStatsFromFile("userStats.txt");
 				std::cout << "You successfully robbed the bank of $" << CasinoCash << "!" << std::endl;
 				userCurrencyAmount = userCurrencyAmount + CasinoCash;
-				FileController::SaveStatsToFile("userStats.txt", userCurrencyAmount);
+				FileController::SaveStatsToFile(userCurrencyAmount);
 				Sleep(1500);
 				CasinoRobbed = true;
 			}
