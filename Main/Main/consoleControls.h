@@ -122,7 +122,7 @@ void AdminLogin()
 		{
 		case 1:
 			FileController::GiveCash();
-			AdminLogin();
+			break;
 		case 2:
 			if (Debugging == true)
 			{
@@ -132,6 +132,9 @@ void AdminLogin()
 			{
 				Debugging = true;
 			}
+			break;
+		default:
+			break;
 		}
 	}
 }
