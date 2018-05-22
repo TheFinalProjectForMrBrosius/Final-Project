@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\CustomHeaders">
-      <UniqueIdentifier>{26f8d8aa-eb52-4537-8f4e-c31b2c592a31}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -23,17 +20,20 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CasinoGames.h">
-      <Filter>Source Files\CustomHeaders</Filter>
+    <ClInclude Include="shopControl.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="fileController.h">
-      <Filter>Source Files\CustomHeaders</Filter>
+    <ClInclude Include="CasinoGames.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="consoleControls.h">
-      <Filter>Source Files\CustomHeaders</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="shopControl.h">
-      <Filter>Source Files\CustomHeaders</Filter>
+    <ClInclude Include="fileController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="logController.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,15 +3,16 @@
 #include <algorithm>
 #include <Windows.h>
 
-std::string itemNames[] = { "DoubleEarnings", "MoreTextColors"};
-double itemPrices[] = { 10, 0.99 };
+#include "fileController.h"
+#include "logController.h"
 
-bool DoubleEarnings = false;
-bool MoreTextColors = false;
+//std::string itemNames[] = { "DoubleEarnings", "MoreTextColors", "Testing"};
+//int itemPrices[] = { 10000, 50, 25 };
 
-namespace ShopControl // Setting namespace so we can do ShopControl::function/variable
+
+namespace ShopControl // Setting namespace so we can do ShopControl::function
 {
-	void ShowShop(double userCurrencyAmount)
+	void ShowShop(int userCurrencyAmount)
 	{
 		system("cls");
 		SetConsoleTitle(TEXT("Bobby's Shop"));
@@ -19,12 +20,12 @@ namespace ShopControl // Setting namespace so we can do ShopControl::function/va
 		std::string userItemChoice;
 		std::string userConfirmation;
 
-		for (int x = 0; x < 2; x++)
+		for (int x = 0; x < itemNamesCount; x++)
 		{
 			std::cout << "Item: " << itemNames[x] << " | Price: " << itemPrices[x] << std::endl; // shows all the items and their prices in their array
 		}
 
-		std::cout << "What would you like to buy: ";
+		std::cout << "\nWhat would you like to buy: ";
 		std::cin >> userItemChoice; // getting user input
 
 		for (int x = 0; x < 2; x++)
@@ -42,12 +43,17 @@ namespace ShopControl // Setting namespace so we can do ShopControl::function/va
 						{
 							userCurrencyAmount = userCurrencyAmount - itemPrices[x]; // deducting the item price amount
 							DoubleEarnings = true;
+							FileController::SaveStatsToFile(userCurrencyAmount);
+							Log::NewLog("Bought DoubleEarnings");
 							std::cout << "\nSuccessfully bought " << userItemChoice << "!" << std::endl;
+							
 						}
 						else if (userItemChoice == "MoreTextColors" && MoreTextColors != true)
 						{
 							userCurrencyAmount = userCurrencyAmount - itemPrices[x];
 							MoreTextColors = true;
+							FileController::SaveStatsToFile(userCurrencyAmount);
+							Log::NewLog("Bought MoreTextColors");
 							std::cout << "\nSuccessfully bought " << userItemChoice << "!" << std::endl;
 						}
 					}
