@@ -27,11 +27,15 @@ namespace ShopControl // Setting namespace so we can do ShopControl::function
 
 		for (int x = 0; x < itemNamesCount; x++)
 		{
+			ttt(itemNames[x]);
+
 			std::cout << "Item: " << itemNames[x] << " | Price: " << itemPrices[x] << std::endl; // shows all the items and their prices in their array
 		}
 
 		std::cout << "\nWhat would you like to buy: ";
 		std::cin >> userItemChoice; // getting user input
+
+		ttt(userItemChoice);
 
 		for (int x = 0; x < 2; x++)
 		{
@@ -44,7 +48,6 @@ namespace ShopControl // Setting namespace so we can do ShopControl::function
 				{
 					if (userCurrencyAmount >= itemPrices[x])
 					{
-						TEXT_LOWER(userItemChoice);
 						if (userItemChoice == "doubleearnings" && DoubleEarnings != true) // checking to see if the user input is DoubleEarnings and the boolean DoubleEarnings isn't true
 						{
 							userCurrencyAmount = userCurrencyAmount - itemPrices[x]; // deducting the item price amount
@@ -61,15 +64,7 @@ namespace ShopControl // Setting namespace so we can do ShopControl::function
 						FileController::SaveStatsToFile(userCurrencyAmount);
 						Log::NewLog("Bought " + userItemChoice);
 					}
-					else
-					{
-						std::cout << "\nYou do not have enough money to purchase [" + userItemChoice + "]!" << std::endl;
-					}
 				}
-			}
-			else
-			{
-				std::cout << userItemChoice << " was not found!" << std::endl;
 			}
 		}
 	}

@@ -6,7 +6,7 @@
 
 #include "logController.h"
 
-std::string itemNames[] = { "DoubleEarnings", "MoreTextColors"};
+std::string itemNames[] = { "doubleearnings", "moretextcolors"};
 int itemPrices[] =		  {      10000,             50, };
 int itemNamesCount = (sizeof(itemNames) / sizeof(itemNames[0]));
 
@@ -95,21 +95,21 @@ namespace FileController
 		Log::NewLog("Saved stats!");
 	}
 
-	//void GiveCash()
-	//{
-	//	GetStatsFromFile("UserStats.stats");
-	//	int amountToAdd = 0;
-	//	std::cout << "\nHow much cash would you like to add (minimum $100): ";
-	//	std::cin >> amountToAdd;
-	// if (amountToAdd >= 100) 
-	//	{
-	//		userCurrencyAmount = userCurrencyAmount + amountToAdd;
-	//		SaveStatsToFile(userCurrencyAmount);
-	//		Log::NewLog("Gave self money!");	
-	//	}
-	//}
-
 	void GiveCash()
+	{
+		GetStatsFromFile("UserStats.stats");
+		int amountToAdd = 0;
+		std::cout << "\nHow much cash would you like to add (minimum $100): ";
+		std::cin >> amountToAdd;
+	 if (amountToAdd >= 100) 
+		{
+			userCurrencyAmount = userCurrencyAmount + amountToAdd;
+			SaveStatsToFile(userCurrencyAmount);
+			Log::NewLog("Gave self money!");	
+		}
+	}
+
+	/*void GiveCash()
 	{
 		int amountToAdd = 0;
 		std::cout << "\nHow much cash would you like to add (minimum $100): ";
@@ -126,7 +126,7 @@ namespace FileController
 			SaveStatsToFile(userCurrencyAmount);
 			Log::NewLog("Gave self money");
 		}
-	}
+	}*/
 
 	void ResetStats(bool abc)
 	{
