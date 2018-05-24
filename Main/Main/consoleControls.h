@@ -10,7 +10,7 @@
 #include "fileController.h"
 
 bool loggedIn = false;
-bool Debugging = true;
+bool Debugging = false;
 
 std::string Username = "Admin";
 std::string Password = "Password";
