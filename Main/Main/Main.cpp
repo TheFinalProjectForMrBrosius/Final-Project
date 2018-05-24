@@ -6,12 +6,15 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "CasinoGames.h"
-#include <conio.h>
+
+std::string VERSION = "1.5.0";
 
 bool FirstLoad = true;
 
 int main()
 {
+	std::string ownedDoubleEarnings = "not owned";
+	std::string ownedMoreTextColors = "not owned";
 	if (FirstLoad == true)
 	{
 		FileController::ClearFile("CurrentSession.logs");
@@ -24,10 +27,10 @@ int main()
 
 	FileController::GetStatsFromFile("UserStats.stats");
 
-	if (userCurrencyAmount < 0)
+	if (userCurrencyAmount <= 0)
 	{
-		Log::NewLog("Broken userCurrencyAmount or too much money\nFixing...");
-		FileController::ResetCash();
+		Log::NewLog("Fixing stats...");
+		FileController::ResetStats(NULL);
 		main();
 	}
 	else
@@ -35,9 +38,19 @@ int main()
 		WelcomeMessage(); // Displays WelcomeMessage in consoleControls.h
 		FileController::GetStatsFromFile("UserStats.stats");
 
-		std::cout << "\nDebug: " << Debugging << "\nDouble Earnings: " << DoubleEarnings << "\nMore Text Colors: "
-			<< MoreTextColors << "\n\nYou currently have $" <<
-			userCurrencyAmount << "\n\n[1] Switch Text Color\n[2] Betting Game\n[3] Dice Game\n[4] Number Guessing Game\n[5] Shop\n[6] Rob Casino\n[7] Reset Cash\n[8] Admin Login\n\nWhat would you like to do: ";
+		if (DoubleEarnings == true)
+		{
+			ownedDoubleEarnings = "owned";
+		}
+
+		if (MoreTextColors == true)
+		{
+			ownedMoreTextColors = "owned";
+		}
+
+		std::cout << "\nVersion: " << VERSION  << "\nDouble Earnings: " << ownedDoubleEarnings << "\nMore Text Colors: "
+			<< ownedMoreTextColors << "\n\nYou currently have $" <<
+			userCurrencyAmount << "\n\n[1] Switch Text Color\n[2] Betting Game\n[3] Dice Game\n[4] Number Guessing Game\n[5] Shop\n[6] Rob Casino\n[7] Reset Stats\n[8] Admin Login\n\n[999] Close\n\nWhat would you like to do: ";
 
 		std::cin >> userSwitchChoice;
 
@@ -70,19 +83,25 @@ int main()
 			CasinoGames::RobCasino();
 			main();
 		case 7:
-			Log::NewLog("Reset Cash");
-			FileController::ResetCash();
+			Log::NewLog("Reset Stats");
+			FileController::ResetStats(true);
 			main();
 		case 8:
 			Log::NewLog("Opened Admin Login");
 			AdminLogin();
 			main();
-		default: // If the input isn't an option
+		case 999:
 			system("cls");
-			Log::NewLog("hOw dO yOU mAnAgE tO NoT pUt In A CORecT nUmBER - Bready");
-			std::cout << "Invalid number!" << std::endl;
-			Sleep(1500);
-			main();
+			std::cout << "Closing...";
+			Log::NewLog("Closing Casino");
+			Sleep(1000);
+			return NULL;
+		//default: // If the input isn't an option
+		//	system("cls");
+		//	Log::NewLog("hOw dO yOU mAnAgE tO NoT pUt In A CORecT nUmBER - Bready");
+		//	std::cout << "Invalid number!" << std::endl;
+		//	Sleep(1500);
+		//	main();
 		}
 	}
 	return 0;
