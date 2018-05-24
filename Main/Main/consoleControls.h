@@ -10,7 +10,7 @@
 #include "fileController.h"
 
 bool loggedIn = false;
-bool Debugging = true;
+bool Debugging = false;
 
 std::string Username = "Admin";
 std::string Password = "Password";
@@ -122,7 +122,7 @@ void AdminLogin()
 		{
 		case 1:
 			FileController::GiveCash();
-			AdminLogin();
+			break;
 		case 2:
 			if (Debugging == true)
 			{
@@ -132,6 +132,9 @@ void AdminLogin()
 			{
 				Debugging = true;
 			}
+			break;
+		default:
+			break;
 		}
 	}
 }

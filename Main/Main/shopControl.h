@@ -9,6 +9,11 @@
 //std::string itemNames[] = { "DoubleEarnings", "MoreTextColors", "Testing"};
 //int itemPrices[] = { 10000, 50, 25 };
 
+std::string ttt(std::string t)
+{
+	std::transform(t.begin(), t.end(), t.begin(), ::tolower);
+	return t;
+}
 
 namespace ShopControl // Setting namespace so we can do ShopControl::function
 {
@@ -39,25 +44,32 @@ namespace ShopControl // Setting namespace so we can do ShopControl::function
 				{
 					if (userCurrencyAmount >= itemPrices[x])
 					{
-						if (userItemChoice == "DoubleEarnings" && DoubleEarnings != true) // checking to see if the user input is DoubleEarnings and the boolean DoubleEarnings isn't true
+						TEXT_LOWER(userItemChoice);
+						if (userItemChoice == "doubleearnings" && DoubleEarnings != true) // checking to see if the user input is DoubleEarnings and the boolean DoubleEarnings isn't true
 						{
 							userCurrencyAmount = userCurrencyAmount - itemPrices[x]; // deducting the item price amount
 							DoubleEarnings = true;
-							FileController::SaveStatsToFile(userCurrencyAmount);
-							Log::NewLog("Bought DoubleEarnings");
 							std::cout << "\nSuccessfully bought " << userItemChoice << "!" << std::endl;
 							
 						}
-						else if (userItemChoice == "MoreTextColors" && MoreTextColors != true)
+						else if (userItemChoice == "moretextcolors" && MoreTextColors != true)
 						{
 							userCurrencyAmount = userCurrencyAmount - itemPrices[x];
 							MoreTextColors = true;
-							FileController::SaveStatsToFile(userCurrencyAmount);
-							Log::NewLog("Bought MoreTextColors");
 							std::cout << "\nSuccessfully bought " << userItemChoice << "!" << std::endl;
 						}
+						FileController::SaveStatsToFile(userCurrencyAmount);
+						Log::NewLog("Bought " + userItemChoice);
+					}
+					else
+					{
+						std::cout << "\nYou do not have enough money to purchase [" + userItemChoice + "]!" << std::endl;
 					}
 				}
+			}
+			else
+			{
+				std::cout << userItemChoice << " was not found!" << std::endl;
 			}
 		}
 	}
