@@ -13,6 +13,12 @@ int CasinoCash = RandomNumberGenerator(250000000);
 
 bool CasinoRobbed = false;
 
+std::string TEXT_LOWER(std::string text)
+{
+	std::transform(text.begin(), text.end(), text.begin(), ::tolower);
+	return text;
+}
+
 namespace CasinoGames
 {
 	void BettingGame();
@@ -75,7 +81,7 @@ namespace CasinoGames
 
 			std::cout << "Would you like to continue [y|n]: "; // v
 			std::cin >> userStringChoice; // seeing if they would like to continue playing this section
-			TransformTextCasing("lower", userStringChoice); // transforming string to lower so there isn't multiple or statements
+			TEXT_LOWER(userStringChoice); // transforming string to lower so there isn't multiple or statements
 		} while (userStringChoice == "y" || userStringChoice == "yes");
 	}
 
@@ -136,7 +142,7 @@ namespace CasinoGames
 
 			std::cout << "Would you like to continue [y|n]: ";
 			std::cin >> userStringChoice;
-			TransformTextCasing("lower", userStringChoice);
+			TEXT_LOWER(userStringChoice);
 		} while (userStringChoice == "y" || userStringChoice == "yes");
 	}
 
@@ -197,7 +203,7 @@ namespace CasinoGames
 
 			std::cout << "Would you like to continue [y|n]: ";
 			std::cin >> userStringChoice;
-			TransformTextCasing("lower", userStringChoice);
+			TEXT_LOWER(userStringChoice);
 		} while (userStringChoice == "y" || userStringChoice == "yes");
 	}
 
