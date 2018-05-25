@@ -1,9 +1,5 @@
 # Final-Project
 
-.Final-Project.Final-Project {
-  background-color: #FF00F0;
-}
-
 _Name_: That One Casino!!!!!
 
 _Version_: 1.5
@@ -19,4 +15,4 @@ _Project Files_:  - CasinoGames.h
                   - fileController.h
                   - shopControl.h
 
-:tada: :fireworks:
+:tada: :fireworks: :boom:
