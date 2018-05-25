@@ -17,6 +17,7 @@ _Project Files_:  &#9830; CasinoGames.h &#9830; :boom:
                   &#9830; fileController.h &#9830; :boom:
                   <br>
                   &#9830; shopControl.h &#9830; :boom:
-This is a [link](https://github.com/TheFinalProjectForMrBrosius/Final-Project) to our GitHub repository for this project. :boom:
+                  <br>
+&#9830; This is a [link](https://github.com/TheFinalProjectForMrBrosius/Final-Project) to our GitHub repository for this project. &#9830;  :boom:
 
 :tada: :fireworks: :boom:
