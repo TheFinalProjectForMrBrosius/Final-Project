@@ -1,6 +1,6 @@
 # Final-Project
 
-_Name_: :boom: That One Casino!!!!! :boom:
+_Name_: :tada: That One Casino!!!!! :tada:
 
 _Version_: 1.5.0 :boom:
 
