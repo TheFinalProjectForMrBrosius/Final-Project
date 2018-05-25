@@ -15,4 +15,4 @@ _Project Files_:  - CasinoGames.h
                   - fileController.h
                   - shopControl.h
 
-:tada: :fireworks: :boom:
+:tada: :fireworks: :boom: :100:
