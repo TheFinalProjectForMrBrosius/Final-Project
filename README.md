@@ -22,6 +22,6 @@ _Project Files_:  <br>
                   <br>
 _Link to Github_: &#9830; This is a [link](https://github.com/TheFinalProjectForMrBrosius/Final-Project) to our GitHub repository for this project. &#9830;  :boom:
 
-![Flow Chart](Main/Capture.PNG)
+![Flow Chart](Final-Project/flowchart.html)
 
 :tada: :fireworks: :boom:
