@@ -93,15 +93,14 @@ int main()
 		case 999:
 			system("cls");
 			std::cout << "Closing...";
-			Log::NewLog("Closing Casino");
 			Sleep(1000);
 			return NULL;
-		//default: // If the input isn't an option
-		//	system("cls");
-		//	Log::NewLog("hOw dO yOU mAnAgE tO NoT pUt In A CORecT nUmBER - Bready");
-		//	std::cout << "Invalid number!" << std::endl;
-		//	Sleep(1500);
-		//	main();
+		default: // If the input isn't an option
+			system("cls");
+			Log::NewLog("hOw dO yOU mAnAgE tO NoT pUt In A CORecT nUmBER - Bready");
+			std::cout << "Invalid number!" << std::endl;
+			Sleep(1500);
+			main();
 		}
 	}
 	return 0;

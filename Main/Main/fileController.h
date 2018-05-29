@@ -6,13 +6,14 @@
 
 #include "logController.h"
 
-std::string itemNames[] = { "doubleearnings", "moretextcolors"};
+std::string itemNames[] = { "DoubleEarnings", "MoreTextColors"};
 int itemPrices[] =		  {      10000,             50, };
 int itemNamesCount = (sizeof(itemNames) / sizeof(itemNames[0]));
 
 bool DoubleEarnings = false;
 bool MoreTextColors = false;
 
+int MAX_CURRENCY = 2000000000;
 int userCurrencyAmount = 0;
 
 int resetAmount = 500;
@@ -99,34 +100,15 @@ namespace FileController
 	{
 		GetStatsFromFile("UserStats.stats");
 		int amountToAdd = 0;
-		std::cout << "\nHow much cash would you like to add (minimum $100): ";
+		std::cout << "\nHow much cash would you like to add (maximum $1 billion): ";
 		std::cin >> amountToAdd;
-	 if (amountToAdd >= 100) 
+	 if (amountToAdd <= 1e9) 
 		{
 			userCurrencyAmount = userCurrencyAmount + amountToAdd;
 			SaveStatsToFile(userCurrencyAmount);
 			Log::NewLog("Gave self money!");	
 		}
 	}
-
-	/*void GiveCash()
-	{
-		int amountToAdd = 0;
-		std::cout << "\nHow much cash would you like to add (minimum $100): ";
-		std::cin >> amountToAdd;
-		if (amountToAdd >= 100 ? userCurrencyAmount > userCurrencyAmount + amountToAdd : userCurrencyAmount < userCurrencyAmount + amountToAdd)
-		{
-			std::cout << "Number too big to add!" << std::endl;
-			Sleep(1500);
-			Log::NewLog("Number too big to add");
-		}
-		else
-		{
-			userCurrencyAmount = userCurrencyAmount + amountToAdd;
-			SaveStatsToFile(userCurrencyAmount);
-			Log::NewLog("Gave self money");
-		}
-	}*/
 
 	void ResetStats(bool abc)
 	{

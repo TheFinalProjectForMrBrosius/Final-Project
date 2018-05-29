@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <algorithm>
 #include <Windows.h>
@@ -6,66 +7,53 @@
 #include "fileController.h"
 #include "logController.h"
 
-//std::string itemNames[] = { "DoubleEarnings", "MoreTextColors", "Testing"};
-//int itemPrices[] = { 10000, 50, 25 };
-
-std::string ttt(std::string t)
-{
-	std::transform(t.begin(), t.end(), t.begin(), ::tolower);
-	return t;
-}
-
-namespace ShopControl // Setting namespace so we can do ShopControl::function
+namespace ShopControl // Setting namespace so we can do ShopControl::functionname
 {
 	void ShowShop(int userCurrencyAmount)
 	{
 		system("cls");
+		std::cout << "You currently have $" << userCurrencyAmount << "\n" << std::endl;
 		SetConsoleTitle(TEXT("Bobby's Shop"));
 
-		std::string userItemChoice;
+		int userItemChoice;
 		std::string userConfirmation;
 
 		for (int x = 0; x < itemNamesCount; x++)
 		{
-			ttt(itemNames[x]);
-
-			std::cout << "Item: " << itemNames[x] << " | Price: " << itemPrices[x] << std::endl; // shows all the items and their prices in their array
+			std::cout << "[" << x + 1 << "] Item: " << itemNames[x] << " | Price: " << itemPrices[x] << std::endl; // shows all the items and their prices in their array
 		}
 
 		std::cout << "\nWhat would you like to buy: ";
 		std::cin >> userItemChoice; // getting user input
 
-		ttt(userItemChoice);
-
-		for (int x = 0; x < 2; x++)
+		switch (userItemChoice)
 		{
-			if (userItemChoice == itemNames[x]) // seeing if the user input matches the element in the itemNames array
+		case 1:
+			if (userCurrencyAmount >= itemPrices[0] && DoubleEarnings != true)
 			{
-				std::cout << "Are you sure you would like to buy [" << userItemChoice << " for $" << itemPrices[x] << "]?: "; // asking if the person is sure they went to purchase that item
-				std::cin >> userConfirmation;
-				std::transform(userConfirmation.begin(), userConfirmation.end(), userConfirmation.begin(), ::tolower); // transform user confirmation to lower
-				if (userConfirmation == "yes" || userConfirmation == "y")
-				{
-					if (userCurrencyAmount >= itemPrices[x])
-					{
-						if (userItemChoice == "doubleearnings" && DoubleEarnings != true) // checking to see if the user input is DoubleEarnings and the boolean DoubleEarnings isn't true
-						{
-							userCurrencyAmount = userCurrencyAmount - itemPrices[x]; // deducting the item price amount
-							DoubleEarnings = true;
-							std::cout << "\nSuccessfully bought " << userItemChoice << "!" << std::endl;
-							
-						}
-						else if (userItemChoice == "moretextcolors" && MoreTextColors != true)
-						{
-							userCurrencyAmount = userCurrencyAmount - itemPrices[x];
-							MoreTextColors = true;
-							std::cout << "\nSuccessfully bought " << userItemChoice << "!" << std::endl;
-						}
-						FileController::SaveStatsToFile(userCurrencyAmount);
-						Log::NewLog("Bought " + userItemChoice);
-					}
-				}
+				std::cout << itemPrices[1];
+				userCurrencyAmount = userCurrencyAmount - itemPrices[0];
+				DoubleEarnings = true;
+				std::cout << "\nSuccessfully bought DoubleEarnings!" << std::endl;
+				FileController::SaveStatsToFile(userCurrencyAmount);
 			}
+			else
+				std::cout << "\nYou do not have enough money to purchase DoubleEarnings or you already have it!" << std::endl;
+			break;
+		case 2:
+			if (userCurrencyAmount >= 50 && MoreTextColors != true)
+			{
+				userCurrencyAmount = userCurrencyAmount - 50;
+				MoreTextColors = true;
+				std::cout << "\nSuccessfully bought MoreTextColors" << std::endl;
+				FileController::SaveStatsToFile(userCurrencyAmount);
+			}
+			else
+				std::cout << "\nYou do not have enough money to purchase MoreTextColors or you already have it!" << std::endl;
+			break;
+		default:
+			std::cout << "Please enter a valid number 1-" << itemNamesCount << "!" << std::endl;
+			ShopControl::ShowShop(userCurrencyAmount);
 		}
 	}
 }

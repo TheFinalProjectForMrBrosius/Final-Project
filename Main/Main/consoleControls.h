@@ -133,8 +133,6 @@ void AdminLogin()
 				Debugging = true;
 			}
 			break;
-		default:
-			break;
 		}
 	}
 }
