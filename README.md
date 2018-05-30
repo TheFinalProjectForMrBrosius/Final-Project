@@ -1,12 +1,27 @@
 # Final-Project
-Name: That One Casino!!!!!
 
-Version: 1.5
+_Name_: :tada: That One Casino!!!!! :tada:
 
-Known Bugs: n/a
+_Version_: 1.5.0 :boom:
 
-Publishers: Brady Heston, Daniel McGlasson
+_Known Bugs_: n/a :tada:
 
-Discription: You can choose between three different games a Number Game, Dice Game, and a Betting Game. After you loose it sends you back to the start of the program and if you winn you collect your winnings. There is a shop where you can purchase a Money Doubler or more text colors for the casino. You can also rob the casino, use Admin Controlls to give yourself money to have some fun with.
+_Publishers_: Brady Heston, Daniel McGlasson :boom:
 
-Project Files: CasinoGames.h, consoleControls.h, fileController.h, shopControl.h
+_Description_: You can choose between three different games a Number Game, Dice Game, and a Betting Game. After you lose it sends you back to the start of the program and if you win you collect your winnings. There is a shop where you can purchase a Money Doubler or more text colors for the casino. You can also rob the casino, use Admin Controls to give yourself money to have some fun with. :boom:
+
+_Project Files_:  <br>
+                  &#9830; CasinoGames.h &#9830; :boom:
+                  <br>
+                  &#9830; consoleControls.h &#9830; :boom:
+                  <br>
+                  &#9830; fileController.h &#9830; :boom:
+                  <br>
+                  &#9830; shopControl.h &#9830; :boom:
+                  <br>
+                  <br>
+_Link to Github_: &#9830; This is a [link](https://github.com/TheFinalProjectForMrBrosius/Final-Project) to our GitHub repository for this project. &#9830;  :boom:
+
+<img src="img/Capture.PNG">
+
+:tada: :fireworks: :boom:
